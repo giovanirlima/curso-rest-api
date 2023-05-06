@@ -1,6 +1,4 @@
-﻿using DevIO.Business.Enums;
-
-namespace DevIO.Business.Models
+﻿namespace DevIO.Business.Models
 {
     public class Fornecedor : Entity
     {
