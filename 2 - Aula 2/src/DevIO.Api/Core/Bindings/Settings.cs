@@ -9,6 +9,7 @@ namespace DevIO.Api.Core.Bindings
         public static void InjectAppSettingsBindings(this IConfiguration configuration)
         {
             _configuration = configuration;
+
             BindDataSettings();
         }
 

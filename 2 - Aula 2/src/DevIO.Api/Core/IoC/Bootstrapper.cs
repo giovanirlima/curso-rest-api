@@ -1,10 +1,10 @@
 ﻿using DevIO.Api.Core.Profiles;
-using DevIO.Business.Interfaces;
-using DevIO.Business.Models;
-using DevIO.Business.Service;
+using DevIO.Business.Intefaces;
+using DevIO.Business.Notificacoes;
+using DevIO.Business.Services;
 using DevIO.Configuration;
-using DevIO.Data.ContextDB;
-using DevIO.Data.Repositories;
+using DevIO.Data.ContextDb;
+using DevIO.Data.Repository;
 using Microsoft.EntityFrameworkCore;
 
 namespace DevIO.Api.Core.IoC
@@ -21,6 +21,7 @@ namespace DevIO.Api.Core.IoC
             InjectAutoMapperDependencies();
             InjectRepositoryDependencies();
             InjectServiceDependencies();
+            InjectNotificationDependencies();
         }
 
         private static void InjectDbContextDependencies()
@@ -30,7 +31,7 @@ namespace DevIO.Api.Core.IoC
         }
 
         private static void InjectAutoMapperDependencies() =>
-            _services.AddAutoMapper(typeof(FornecedorProfile).Assembly);
+            _services.AddAutoMapper(typeof(ClassProfile).Assembly);
 
         private static void InjectRepositoryDependencies()
         {
@@ -42,6 +43,10 @@ namespace DevIO.Api.Core.IoC
         private static void InjectServiceDependencies()
         {
             _services.AddScoped<IFornecedorService, FornecedorService>();
+            _services.AddScoped<IProdutoService, ProdutoService>();
         }
+
+        private static void InjectNotificationDependencies() =>
+            _services.AddScoped<INotificador, Notificador>();
     }
 }

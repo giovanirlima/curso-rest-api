@@ -1,10 +1,13 @@
-﻿using DevIO.Business.DataTransferObjects;
+﻿using DevIO.Business.Models;
 
-namespace DevIO.Business.Interfaces
+namespace DevIO.Business.Intefaces
 {
-    public interface IFornecedorService
+    public interface IFornecedorService : IDisposable
     {
-        Task<IEnumerable<FornecedorDTO>> ObterTodosAsync();
-        Task<FornecedorDTO> ObterPorIdAsync(Guid id);
+        Task<bool> AdicionarAsync(Fornecedor fornecedor);
+        Task<bool> AtualizarAsync(Fornecedor fornecedor);
+        Task<bool> RemoverAsync(Guid id);
+
+        Task AtualizarEnderecoAsync(Endereco endereco);
     }
 }

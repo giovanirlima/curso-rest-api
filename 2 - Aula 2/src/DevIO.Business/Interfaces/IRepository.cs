@@ -1,16 +1,16 @@
 ﻿using DevIO.Business.Models;
 using System.Linq.Expressions;
 
-namespace DevIO.Business.Interfaces
+namespace DevIO.Business.Intefaces
 {
-    public interface IRepository<T> : IDisposable where T : Entity
+    public interface IRepository<TEntity> : IDisposable where TEntity : Entity
     {
-        Task<IEnumerable<T>> Buscar(Expression<Func<T, bool>> predicate);
-        Task<T> ObterPorIdAsync(Guid id);
-        Task<IEnumerable<T>> ObterTodosAsync();
-        Task AdicionarAsync(T entity);
-        Task AtualizarAsync(T entity);
-        Task RemoverAsync(Guid id);
-        Task SaveChangesAsync();
+        Task Adicionar(TEntity entity);
+        Task<TEntity> ObterPorIdAsync(Guid id);
+        Task<List<TEntity>> ObterTodos();
+        Task Atualizar(TEntity entity);
+        Task Remover(Guid id);
+        Task<IEnumerable<TEntity>> Buscar(Expression<Func<TEntity, bool>> predicate);
+        Task<int> SaveChangesAsync();
     }
 }
